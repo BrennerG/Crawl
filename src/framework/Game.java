@@ -1,4 +1,5 @@
 package framework;
+import model.Assets;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -20,7 +21,6 @@ public class Game implements Runnable {
 	private boolean running = false;
 	private int fps = 30;
 	
-	BufferedImage sprite = ImageLoader.getSprite("/Sprites1.png", 1);
 	int x = 5;
 	
 	public Game( String title, int width, int height){
@@ -31,8 +31,7 @@ public class Game implements Runnable {
 
 	private void init(){
 		display = new Display( title, width, height );
-		//ImageLoader.loadImage(String path) HEREs
-		
+		Assets.init();
 	}
 	
 	private void update(){
@@ -54,7 +53,7 @@ public class Game implements Runnable {
 		g.fillRect(0, 0, width, height);
 		//DRAW HERE!
 			
-			g.drawImage( sprite, x, 10, null );
+			g.drawImage(Assets.blob, x, 10, 50, 50, null);
 		
 		//END
 		bs.show();
