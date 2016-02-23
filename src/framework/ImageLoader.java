@@ -16,7 +16,7 @@ public class ImageLoader {
 		}
 	}
 	
-	public static BufferedImage getSprite( String path, int slot ) throws IllegalArgumentException {
+public static BufferedImage getSprite( String path, int slot ) throws IllegalArgumentException {
 	
 		if( (slot < 0) || (slot > 15))
 			throw new IllegalArgumentException();

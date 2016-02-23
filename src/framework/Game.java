@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+
+import abstractEntities.Player;
+
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -21,22 +24,25 @@ public class Game implements Runnable {
 	private boolean running = false;
 	private int fps = 30;
 	
-	int x = 5;
+	KeyManager keys;
+	Player player = new Player( this, 200f, 200f );
 	
 	public Game( String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		keys = new KeyManager();
 	}
 
 	private void init(){
 		display = new Display( title, width, height );
+		display.getFrame().addKeyListener(keys);
 		Assets.init();
 	}
 	
 	private void update(){
 		
-		x++;
+		player.update();
 	}
 	
 	private void render(){
@@ -53,7 +59,7 @@ public class Game implements Runnable {
 		g.fillRect(0, 0, width, height);
 		//DRAW HERE!
 			
-			g.drawImage(Assets.blob, x, 10, 50, 50, null);
+			player.render(g);
 		
 		//END
 		bs.show();
@@ -98,5 +104,9 @@ public class Game implements Runnable {
 		} catch( InterruptedException e ){
 			e.printStackTrace();
 		}
+	}
+
+	public KeyManager getKeyManager() {
+		return keys;
 	}
 }
