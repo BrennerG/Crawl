@@ -13,19 +13,17 @@ import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
 
-	private Display display;
-	private Thread thread;
-	private BufferStrategy bs;
-	private Graphics g;
-	private BufferedImage testImage;
-	
 	public String title;
 	public int width, height;
 	private boolean running = false;
 	private int fps = 30;
 	
+	private Display display;
+	private Thread thread;
+	private BufferStrategy bs;
+	private Graphics g;
 	KeyManager keys;
-	Player player = new Player( this, 200f, 200f );
+	Player player = new Player( this, 300f, 200f );
 	
 	public Game( String title, int width, int height){
 		this.width = width;
@@ -41,7 +39,7 @@ public class Game implements Runnable {
 	}
 	
 	private void update(){
-		
+		keys.update();
 		player.update();
 	}
 	
