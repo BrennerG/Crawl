@@ -56,7 +56,11 @@ public class Game implements Runnable {
 		g.setColor( Color.white );
 		g.fillRect(0, 0, width, height);
 		//DRAW HERE!
-			
+			g.setColor(Color.darkGray);
+			for(int i = 1; i < width/i; ++i){
+				g.drawRect(i*10, i*10, width - 20*i, height - 20*i);
+			}
+			g.drawRect(10, 10, 880, 580);
 			player.render(g);
 		
 		//END
