@@ -1,5 +1,7 @@
 package abstractEntities;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 import framework.Game;
 import model.Assets;
 
@@ -24,7 +26,7 @@ public class Player extends LifeForm {
 	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage( Assets.blob, (int)x, (int)y, DEFAULT_SIZE, DEFAULT_SIZE, null);
+		g.drawImage( Assets.stranger, (int)x, (int)y, DEFAULT_SIZE, DEFAULT_SIZE, null);
 	}
 	
 	private void getInput(){

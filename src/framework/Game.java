@@ -1,14 +1,15 @@
 package framework;
-import model.Assets;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+//import java.awt.image.BufferedImage;
+//import java.awt.Graphics;
+//import java.awt.image.BufferStrategy;
 
+import model.Assets;
 import abstractEntities.Player;
-
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
+import entities.*;
 
 
 public class Game implements Runnable {
@@ -23,7 +24,10 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	KeyManager keys;
+	
 	Player player = new Player( this, 300f, 200f );
+	Dummy dummy = new Dummy( 600f, 250f );
+	StaticDummy sdummy = new StaticDummy( 100f, 200f );
 	
 	public Game( String title, int width, int height){
 		this.width = width;
@@ -41,6 +45,8 @@ public class Game implements Runnable {
 	private void update(){
 		keys.update();
 		player.update();
+		dummy.update();
+		sdummy.update();
 	}
 	
 	private void render(){
@@ -56,12 +62,10 @@ public class Game implements Runnable {
 		g.setColor( Color.white );
 		g.fillRect(0, 0, width, height);
 		//DRAW HERE!
-			g.setColor(Color.darkGray);
-			for(int i = 1; i < width/i; ++i){
-				g.drawRect(i*10, i*10, width - 20*i, height - 20*i);
-			}
-			g.drawRect(10, 10, 880, 580);
+		
 			player.render(g);
+			dummy.render(g);
+			sdummy.render(g);
 		
 		//END
 		bs.show();

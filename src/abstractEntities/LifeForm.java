@@ -4,7 +4,7 @@ public abstract class LifeForm extends Entity{
 
 	public static final int DEFAULT_HP = 20;
 	public static final float DEFAULT_SPEED = 3.0f;
-	public static final int DEFAULT_SIZE = 32;
+	protected static final int DEFAULT_SIZE = 32;
 	
 	protected int hp;
 	protected float xMove, yMove;
