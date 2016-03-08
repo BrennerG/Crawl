@@ -10,12 +10,9 @@ public class Player extends LifeForm {
 	public static final int DEFAULT_HEALTH = 50;
 	public static final float DEFAULT_SPEED = 4.0f;
 	public static final int DEFAULT_SIZE = 40;
-	
-	private Game game;
-	
+
 	public Player( Game game, float x, float y ){
 		super( game,x, y, DEFAULT_SIZE, DEFAULT_SIZE );
-		this.game = game;
 		this.hitbox.x = 0;
 		this.hitbox.y = 0;
 		this.hitbox.width = DEFAULT_SIZE;

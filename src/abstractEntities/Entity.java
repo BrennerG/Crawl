@@ -14,6 +14,7 @@ public abstract class Entity {
 	protected Game game;
 
 	public Entity( Game game, float x, float y, int width, int height ){
+		this.game = game;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -24,14 +25,20 @@ public abstract class Entity {
 	public abstract void update();
 	public abstract void render( Graphics g);
 	
-	public boolean checkEntityCollisions(){
+	public boolean checkEntityCollisions( float xOffset, float yOffset ){
 		for( Entity ent : game.getEntityManager() ){
-			if( ent.equals(this))
+			if(ent.equals(this))
 				continue;
-			if( ent.getHitbox().intersects(this.hitbox) )
+			if(ent.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
+				System.out.println("collided!");
 				return true;
+			}
 		}
 		return false;
+	}
+	
+	public Rectangle getCollisionBounds( float xOffset, float yOffset ){
+		return new Rectangle( (int)(x + hitbox.x + xOffset), (int)(y + hitbox.y + yOffset), hitbox.width, hitbox.height );
 	}
 	
 ///GETTERS SETTERS

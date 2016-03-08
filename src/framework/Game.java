@@ -29,10 +29,6 @@ public class Game implements Runnable {
 	private Player player = new Player( this, 300f, 200f );
 	private EntityManager entMan = new EntityManager(this);
 	
-	
-	//StaticDummy sdummy = new StaticDummy( 100f, 200f );
-	//new Dummy(600f, 250f)
-	
 	public Game( String title, int width, int height){
 		this.width = width;
 		this.height = height;
@@ -43,10 +39,9 @@ public class Game implements Runnable {
 	private void init(){
 		display = new Display( title, width, height );
 		display.getFrame().addKeyListener(keys);
-		Assets.init();
-		
-		//entMan.adds NOCH hier
-		entMan.add(new StaticDummy(this, 600f, 250f));
+		Assets.init();	
+		//entMan.adds NOCH here
+			entMan.add(new StaticDummy(this, 600f, 250f));
 	}
 	
 	private void update(){
@@ -55,7 +50,6 @@ public class Game implements Runnable {
 	}
 	
 	private void render(){
-	
 		bs = display.getCanvas().getBufferStrategy();
 			if( bs == null ){	
 				display.getCanvas().createBufferStrategy(1);
@@ -115,6 +109,8 @@ public class Game implements Runnable {
 		}
 	}
 
+///GETTERS / SETTERS
+	
 	public KeyManager getKeyManager() {
 		return keys;
 	}
