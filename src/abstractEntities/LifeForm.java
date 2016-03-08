@@ -1,5 +1,7 @@
 package abstractEntities;
 
+import framework.Game;
+
 public abstract class LifeForm extends Entity{
 
 	public static final int DEFAULT_HP = 20;
@@ -10,8 +12,8 @@ public abstract class LifeForm extends Entity{
 	protected float xMove, yMove;
 	protected float speed;
 	
-	public LifeForm( float x, float y, int width, int height ) {
-		super(x, y, width, height);
+	public LifeForm( Game game, float x, float y, int width, int height ) {
+		super( game, x, y, width, height);
 		this.speed = DEFAULT_SPEED;
 		this.hp = DEFAULT_HP;
 		this.xMove = 0;
@@ -19,8 +21,20 @@ public abstract class LifeForm extends Entity{
 	}
 	
 	public void move(){
+		moveX();
+		moveY();
+	}
+	
+	public void moveX(){
 		x += xMove;
+	}
+	
+	public void moveY(){
 		y += yMove;
+	}
+	
+	protected boolean collisionWith(){
+		return false;
 	}
 	
 /// GETTERS SETTERS

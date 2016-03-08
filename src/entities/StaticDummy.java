@@ -1,12 +1,13 @@
 package entities;
 import java.awt.Graphics;
 import abstractEntities.LifeForm;
+import framework.Game;
 import model.Assets;
 
 public class StaticDummy extends LifeForm {
 	
-	public StaticDummy( float x, float y ){
-		super( x, y, DEFAULT_SIZE, DEFAULT_SIZE );
+	public StaticDummy( Game game, float x, float y ){
+		super( game, x, y, DEFAULT_SIZE, DEFAULT_SIZE );
 		speed = 0.5f;
 	}
 

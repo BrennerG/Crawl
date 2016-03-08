@@ -14,8 +14,12 @@ public class Player extends LifeForm {
 	private Game game;
 	
 	public Player( Game game, float x, float y ){
-		super( x, y, DEFAULT_SIZE, DEFAULT_SIZE );
+		super( game,x, y, DEFAULT_SIZE, DEFAULT_SIZE );
 		this.game = game;
+		this.hitbox.x = 0;
+		this.hitbox.y = 0;
+		this.hitbox.width = DEFAULT_SIZE;
+		this.hitbox.height = DEFAULT_SIZE;
 	}
 
 	@Override

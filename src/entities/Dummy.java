@@ -1,14 +1,15 @@
 package entities;
 import java.awt.Graphics;
 import abstractEntities.LifeForm;
+import framework.Game;
 import model.Assets;
 
 public class Dummy extends LifeForm {
 
 	private float startY;
 	
-	public Dummy( float x, float y ){
-		super( x, y, DEFAULT_SIZE, DEFAULT_SIZE );
+	public Dummy( Game game, float x, float y ){
+		super( game, x, y, DEFAULT_SIZE, DEFAULT_SIZE );
 		speed = 0.5f;
 		startY = y;
 	}

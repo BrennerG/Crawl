@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 //import java.awt.image.BufferStrategy;
 
 import model.Assets;
+import abstractEntities.EntityManager;
 import abstractEntities.Player;
 import entities.*;
 
@@ -25,9 +26,12 @@ public class Game implements Runnable {
 	private Graphics g;
 	KeyManager keys;
 	
-	Player player = new Player( this, 300f, 200f );
-	Dummy dummy = new Dummy( 600f, 250f );
-	StaticDummy sdummy = new StaticDummy( 100f, 200f );
+	private Player player = new Player( this, 300f, 200f );
+	private EntityManager entMan = new EntityManager(this);
+	
+	
+	//StaticDummy sdummy = new StaticDummy( 100f, 200f );
+	//new Dummy(600f, 250f)
 	
 	public Game( String title, int width, int height){
 		this.width = width;
@@ -40,13 +44,14 @@ public class Game implements Runnable {
 		display = new Display( title, width, height );
 		display.getFrame().addKeyListener(keys);
 		Assets.init();
+		
+		//entMan.adds NOCH hier
+		entMan.add(new StaticDummy(this, 600f, 250f));
 	}
 	
 	private void update(){
 		keys.update();
-		player.update();
-		dummy.update();
-		sdummy.update();
+		entMan.update();
 	}
 	
 	private void render(){
@@ -62,10 +67,8 @@ public class Game implements Runnable {
 		g.setColor( Color.white );
 		g.fillRect(0, 0, width, height);
 		//DRAW HERE!
-		
-			player.render(g);
-			dummy.render(g);
-			sdummy.render(g);
+
+			entMan.render(g);
 		
 		//END
 		bs.show();
@@ -114,5 +117,13 @@ public class Game implements Runnable {
 
 	public KeyManager getKeyManager() {
 		return keys;
+	}
+	
+	public Player getPlayer(){
+		return this.player;
+	}
+	
+	public EntityManager getEntityManager(){
+		return this.entMan;
 	}
 }
