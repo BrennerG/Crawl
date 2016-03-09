@@ -11,6 +11,7 @@ public abstract class LifeForm extends Entity{
 	protected int hp;
 	protected float xMove, yMove;
 	protected float speed;
+	protected int direction = 0;	//1=W, 2=A, 3=S, 4=D
 	
 	public LifeForm( Game game, float x, float y, int width, int height ) {
 		super( game, x, y, width, height);
@@ -72,5 +73,7 @@ public abstract class LifeForm extends Entity{
 		this.speed = speed;
 	}
 	
-	
+	public int getDirection(){ return this.direction; }
+	public void setDirection( int a ){ this.direction = a; }
+
 }

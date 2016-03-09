@@ -42,6 +42,7 @@ public class Game implements Runnable {
 		Assets.init();	
 		//entMan.adds NOCH here
 			entMan.add(new StaticDummy(this, 600f, 250f));
+			entMan.add(new Dummy(this, 400f, 190f));
 	}
 	
 	private void update(){

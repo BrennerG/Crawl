@@ -10,7 +10,7 @@ public class Player extends LifeForm {
 	public static final int DEFAULT_HEALTH = 50;
 	public static final float DEFAULT_SPEED = 4.0f;
 	public static final int DEFAULT_SIZE = 40;
-
+		
 	public Player( Game game, float x, float y ){
 		super( game,x, y, DEFAULT_SIZE, DEFAULT_SIZE );
 		this.hitbox.x = 0;
@@ -34,13 +34,25 @@ public class Player extends LifeForm {
 		xMove = 0;
 		yMove = 0;
 		
-		if( game.getKeyManager().w )
+		if( game.getKeyManager().w ){
 			yMove -= speed;
-		if( game.getKeyManager().a )
+			direction = 1;
+		}
+		if( game.getKeyManager().a ){
 			xMove -= speed;
-		if( game.getKeyManager().s )
+			direction = 2;
+		}
+		if( game.getKeyManager().s ){
 			yMove += speed;
-		if( game.getKeyManager().d )
+			direction = 3;
+		}
+		if( game.getKeyManager().d ){
 			xMove += speed;
+			direction = 4;
+		}
 	}
+
+///GETTERS SETTERS
+
+
 }
