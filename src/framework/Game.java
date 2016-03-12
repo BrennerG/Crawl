@@ -25,9 +25,9 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	KeyManager keys;
-	
-	private Player player = new Player( this, 300f, 200f );
-	private EntityManager entMan = new EntityManager(this);
+
+	private Player player;
+	private EntityManager entMan;
 	
 	public Game( String title, int width, int height){
 		this.width = width;
@@ -39,10 +39,13 @@ public class Game implements Runnable {
 	private void init(){
 		display = new Display( title, width, height );
 		display.getFrame().addKeyListener(keys);
-		Assets.init();	
+		Assets.init();
+		player = new Player( this, 300f, 200f );
+		entMan = new EntityManager(this);
 		//entMan.adds NOCH here
 			entMan.add(new StaticDummy(this, 600f, 250f));
-			entMan.add(new Dummy(this, 400f, 190f));
+			entMan.add( player );
+			//entMan.add(new Dummy(this, 400f, 190f));
 	}
 	
 	private void update(){

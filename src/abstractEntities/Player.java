@@ -2,6 +2,7 @@ package abstractEntities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import entities.Fireball;
 import framework.Game;
 import model.Assets;
 
@@ -10,7 +11,7 @@ public class Player extends LifeForm {
 	public static final int DEFAULT_HEALTH = 50;
 	public static final float DEFAULT_SPEED = 4.0f;
 	public static final int DEFAULT_SIZE = 40;
-		
+	
 	public Player( Game game, float x, float y ){
 		super( game,x, y, DEFAULT_SIZE, DEFAULT_SIZE );
 		this.hitbox.x = 0;
@@ -50,6 +51,13 @@ public class Player extends LifeForm {
 			xMove += speed;
 			direction = 4;
 		}
+		if( game.getKeyManager().space ){
+			shootFireball();
+		}
+	}
+	
+	private void shootFireball(){
+			game.getEntityManager().add( new Fireball( game, this ) );
 	}
 
 ///GETTERS SETTERS

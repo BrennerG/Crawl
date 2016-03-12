@@ -4,7 +4,7 @@ import java.awt.event.*;
 public class KeyManager implements KeyListener {
 
 	private boolean[] keys;
-	public boolean w, a, s, d;
+	public boolean w, a, s, d, space;
 	
 	public KeyManager(){
 		keys = new boolean[256];
@@ -15,6 +15,7 @@ public class KeyManager implements KeyListener {
 		a = keys[KeyEvent.VK_A];
 		s = keys[KeyEvent.VK_S];
 		d = keys[KeyEvent.VK_D];
+		space = keys[KeyEvent.VK_SPACE];
 	}
 	
 	@Override

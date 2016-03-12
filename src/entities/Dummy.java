@@ -27,12 +27,12 @@ public class Dummy extends LifeForm {
 		if( y<startY-50 ){
 			//yMove = 0;
 			yMove += speed;
-			System.out.println(y);
+			//System.out.println(y);
 		}
 		else{
 			//yMove = 0;
 			yMove -= speed;
-			System.out.println(y);
+			//System.out.println(y);
 		}
 	}
 }
